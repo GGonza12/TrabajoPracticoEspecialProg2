@@ -3,7 +3,9 @@ package Lista_viculada;
 public class Nodo<T> {
 	private T valor;
 	private Nodo<T> siguienteNodo;
-	
+	public Nodo(T valor) {
+		this(valor,null);
+	}
 	public Nodo(T valor, Nodo<T> siguienteNodo) {
 		this.valor = valor;
 		this.siguienteNodo = siguienteNodo;
@@ -27,7 +29,7 @@ public class Nodo<T> {
 
 	@Override
 	public String toString() {
-		return "Nodo [info=" + valor + ", siguienteNodo=" + siguienteNodo + "]";
+		return "Nodo [valor=" + valor + ", siguienteNodo=" + siguienteNodo + "]";
 	}
 	
 	

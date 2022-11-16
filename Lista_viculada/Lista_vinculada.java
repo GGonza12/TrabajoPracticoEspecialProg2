@@ -2,53 +2,86 @@ package Lista_viculada;
 
 import java.util.Comparator;
 
-public class Lista_vinculada<T> {
+public class Lista_vinculada<T>{
 	private	Nodo<T> primero;
-
-	private Comparator<T> orden;
+	private int tamano;
+	private Comparator<T> comp;
 	
 	
-	public Lista_vinculada() {
+	public Lista_vinculada(Comparator<T> comp) {
 		this.primero = null;
-		
+		this.comp= comp;
+		this.tamano =0;
 	}
 
 
 
 	public void insertarOrdenado(T dato) {
-		IteradorLista<T> it = new IteradorLista<T>(this.primero);
+		Nodo<T> nuevo = new Nodo<T>(dato);
 		if(this.primero==null) {
-			this.primero = new Nodo<T>(dato,this.primero);
+			this.primero = nuevo;
 		}
 		else {
-			while(it.hasNext()) {
-				//Nodo<T> aux = new Nodo<T>(dato,this.primero);
-				T i = it.next();
-				
-				if(orden.compare(i, dato)>0) {
-					this.primero.setValor(dato);
-					this.primero.setSiguienteNodo(this.primero);
+			Nodo<T> anterior = null;
+			Nodo<T> aux = this.primero;	
+			while((aux!=null)&&(comp.compare(dato, aux.getValor())>0)) {
+				anterior = aux;
+				aux = aux.getSiguienteNodo();
+			}
+			if(anterior!=null && aux==null) {
+				anterior.setSiguienteNodo(nuevo);					
+			}
+			else {
+				nuevo.setSiguienteNodo(aux);
+				if(aux == this.primero) {
+					this.primero = nuevo;
 				}
-				
+				else {
+					anterior.setSiguienteNodo(nuevo);
+				}
 			}
 		}
 		
-		
+		this.tamano++;
 		
 	}
 	public void eliminarNodo(int pos) {
-		IteradorLista<T> it = new IteradorLista<T>(this.primero);
 		int sum=0;
+		Nodo<T> anterior = null;
+		Nodo<T> aux = this.primero;	
 		
-			while(it.hasNext()&&sum<pos) {
-				T i = it.next();
+			while((aux!=null)&&(sum<pos)) {
+				anterior= aux;
+				aux = aux.getSiguienteNodo();
 				sum++;
 				}
-			if(sum==pos) {
-				it.obtenerActual().setValor(it.obtenerActual().getSiguienteNodo().getValor());;
-				
+			if(sum==pos&&(aux.getSiguienteNodo()!=null)&&(anterior!=null)) {
+				anterior.setSiguienteNodo(aux.getSiguienteNodo());
+				this.tamano--;
 			}
+			else if(sum==pos&&(aux.getSiguienteNodo()==null)&&(anterior!=null)){
+				anterior.setSiguienteNodo(null);
+				this.tamano--;
+			}
+			else if(sum==pos&&(aux.getSiguienteNodo()!=null)&&(anterior==null)) {
+				this.primero=aux.getSiguienteNodo();
+				this.tamano--;
+			}
+			
 		
+	}
+	public void eliminarOcurrencias(T dato) {
+		Nodo<T> anterior = null;
+		Nodo<T> aux = this.primero;	
+		int pos=0;
+		while (aux.getSiguienteNodo()!=null) {
+			if(aux.getValor()==dato) {
+				eliminarNodo(pos);
+			}
+			anterior= aux;
+			aux = aux.getSiguienteNodo();
+			pos++;
+		}
 	}
 	
 	public void mostrarLista() {
