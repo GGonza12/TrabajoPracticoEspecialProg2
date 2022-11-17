@@ -89,11 +89,12 @@ public class Lista_vinculada<T>{
 		Nodo<T> aux = this.primero;	
 		int pos=0;
 			while((aux!=null)&&(encontrado==false)) {
-				aux = aux.getSiguienteNodo();
-				pos++;
 				if(aux.getValor()==dato) {
 					encontrado=!encontrado;
+					pos--;
 				}
+				aux = aux.getSiguienteNodo();
+				pos++;
 				}
 		System.out.println(pos);
 	}
