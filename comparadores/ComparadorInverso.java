@@ -1,4 +1,4 @@
-package Lista_viculada;
+package comparadores;
 
 import java.util.Comparator;
 
@@ -10,7 +10,7 @@ public class ComparadorInverso<T> implements Comparator<T>{
 	@Override
 	public int compare(T o1, T o2) {
 		
-		return o1.compareTo(o2)*-1;
+		return this.comp.compare(o1, o2)*-1;
 	}
 
 }

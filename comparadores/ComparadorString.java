@@ -1,4 +1,4 @@
-package Lista_viculada;
+package comparadores;
 
 import java.util.Comparator;
 

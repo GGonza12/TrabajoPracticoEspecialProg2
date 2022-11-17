@@ -13,7 +13,14 @@ public class Lista_vinculada<T>{
 		this.comp= comp;
 		this.tamano =0;
 	}
-
+	public void reordenar() {
+		Nodo <T> aux = this.primero;
+		//this.primero = null;
+		while(aux!=null) {
+			this.insertarOrdenado(aux.getValor());
+			aux = aux.getSiguienteNodo();
+		}
+	}
 
 
 	public void insertarOrdenado(T dato) {
@@ -91,12 +98,11 @@ public class Lista_vinculada<T>{
 			while((aux!=null)&&(encontrado==false)) {
 				if(aux.getValor()==dato) {
 					encontrado=!encontrado;
-					pos--;
+					System.out.println(pos);
 				}
 				aux = aux.getSiguienteNodo();
 				pos++;
 				}
-		System.out.println(pos);
 	}
 	
 	public void mostrarLista() {
