@@ -77,11 +77,25 @@ public class Lista_vinculada<T>{
 		while (aux.getSiguienteNodo()!=null) {
 			if(aux.getValor()==dato) {
 				eliminarNodo(pos);
+				pos--;
 			}
 			anterior= aux;
 			aux = aux.getSiguienteNodo();
 			pos++;
 		}
+	}
+	public void obtenerPrimeraOcurrencia(T dato) {
+		boolean encontrado=false;
+		Nodo<T> aux = this.primero;	
+		int pos=0;
+			while((aux!=null)&&(encontrado==false)) {
+				aux = aux.getSiguienteNodo();
+				pos++;
+				if(aux.getValor()==dato) {
+					encontrado=!encontrado;
+				}
+				}
+		System.out.println(pos);
 	}
 	
 	public void mostrarLista() {
