@@ -32,6 +32,11 @@ public class Alumno {
 	public void addInteres(String i) {
 		intereses.add(i);
 	}
+	@Override
+	public String toString() {
+		return "Alumno [nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + ", edad=" + edad
+				+ ", intereses=" + intereses + "]";
+	}
 	
 	
 }

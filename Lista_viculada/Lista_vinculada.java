@@ -7,21 +7,25 @@ public class Lista_vinculada<T>{
 	private int tamano;
 	private Comparator<T> comp;
 	
-	
 	public Lista_vinculada(Comparator<T> comp) {
 		this.primero = null;
 		this.comp= comp;
 		this.tamano =0;
 	}
+	
+	public void setComp(Comparator<T> comp) {
+		this.comp = comp;
+		reordenar();
+	}
+
 	public void reordenar() {
 		Nodo <T> aux = this.primero;
-		//this.primero = null;
+		this.primero =null;
 		while(aux!=null) {
 			this.insertarOrdenado(aux.getValor());
 			aux = aux.getSiguienteNodo();
 		}
 	}
-
 
 	public void insertarOrdenado(T dato) {
 		Nodo<T> nuevo = new Nodo<T>(dato);
@@ -31,7 +35,7 @@ public class Lista_vinculada<T>{
 		else {
 			Nodo<T> anterior = null;
 			Nodo<T> aux = this.primero;	
-			while((aux!=null)&&(comp.compare(dato, aux.getValor())>0)) {
+			while((aux!=null)&&(comp.compare(dato, aux.getValor())>1)){
 				anterior = aux;
 				aux = aux.getSiguienteNodo();
 			}
@@ -48,9 +52,7 @@ public class Lista_vinculada<T>{
 				}
 			}
 		}
-		
 		this.tamano++;
-		
 	}
 	public void eliminarNodo(int pos) {
 		int sum=0;
@@ -74,9 +76,8 @@ public class Lista_vinculada<T>{
 				this.primero=aux.getSiguienteNodo();
 				this.tamano--;
 			}
-			
-		
 	}
+	
 	public void eliminarOcurrencias(T dato) {
 		Nodo<T> anterior = null;
 		Nodo<T> aux = this.primero;	

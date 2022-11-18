@@ -17,10 +17,10 @@ public class ComparadorDni<T> implements Comparator<T>{
 			res=0;
 		}
 		else if(a1.getDni()< a2.getDni()) {
-			res=-1;
+			res=1;
 		}
 		else if(a1.getDni()> a2.getDni()) {
-			res=1;
+			res=-1;
 		}
 		return res;
 	}
