@@ -7,5 +7,8 @@ public abstract class ElementoUniversidad {
 		this.nombre=nombre;
 	}
 	public abstract int getCantidadAlumnos();
+	public String getNombre() {
+		return this.nombre;
+	}
 	
 }

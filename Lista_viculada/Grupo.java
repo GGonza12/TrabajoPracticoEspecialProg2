@@ -19,6 +19,12 @@ public class Grupo extends ElementoUniversidad{
 		}
 		return cant;
 	}
+	@Override
+	public String toString() {
+		return "Grupo [elementos=" + elementos + "]";
+	}
+	
+	
 	
 }
  

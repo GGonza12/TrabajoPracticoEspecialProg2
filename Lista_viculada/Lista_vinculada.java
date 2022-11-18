@@ -1,8 +1,9 @@
 package Lista_viculada;
 
 import java.util.Comparator;
+import java.util.Iterator;
 
-public class Lista_vinculada<T>{
+public class Lista_vinculada<T> implements Iterable<T>{
 	private	Nodo<T> primero;
 	private int tamano;
 	private Comparator<T> comp;
@@ -35,7 +36,7 @@ public class Lista_vinculada<T>{
 		else {
 			Nodo<T> anterior = null;
 			Nodo<T> aux = this.primero;	
-			while((aux!=null)&&(comp.compare(dato, aux.getValor())>1)){
+			while((aux!=null)&&(comp.compare(dato, aux.getValor())>0)){
 				anterior = aux;
 				aux = aux.getSiguienteNodo();
 			}
@@ -79,7 +80,7 @@ public class Lista_vinculada<T>{
 	}
 	
 	public void eliminarOcurrencias(T dato) {
-		Nodo<T> anterior = null;
+		//Nodo<T> anterior = null;
 		Nodo<T> aux = this.primero;	
 		int pos=0;
 		while (aux.getSiguienteNodo()!=null) {
@@ -87,7 +88,7 @@ public class Lista_vinculada<T>{
 				eliminarNodo(pos);
 				pos--;
 			}
-			anterior= aux;
+			//anterior= aux;
 			aux = aux.getSiguienteNodo();
 			pos++;
 		}
@@ -104,14 +105,9 @@ public class Lista_vinculada<T>{
 				aux = aux.getSiguienteNodo();
 				pos++;
 				}
-	}
-	
-	public void mostrarLista() {
-		IteradorLista<T> it = new IteradorLista<T>(this.primero);
-		while(it.hasNext()) {
-			Object i = it.next();
-			System.out.println(i);
-		}
+			if(encontrado==false) {
+				System.out.println("No encontrado en lista.");
+			}
 	}
 
 
@@ -119,6 +115,12 @@ public class Lista_vinculada<T>{
 	@Override
 	public String toString() {
 		return "Lista_vinculada [primero=" + primero + "]";
+	}
+
+	@Override
+	public Iterator<T> iterator() {
+		
+		return new IteradorLista<T>(this.primero);
 	}
 	
 }

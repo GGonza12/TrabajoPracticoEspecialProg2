@@ -3,7 +3,7 @@ package Lista_viculada;
 import java.util.ArrayList;
 
 public class Alumno extends ElementoUniversidad{
-	private String nombre,apellido;
+	private String apellido;
 	private int dni;
 	private int edad;
 	private ArrayList<String> intereses;
@@ -13,9 +13,6 @@ public class Alumno extends ElementoUniversidad{
 		this.dni = dni;
 		this.edad = edad;
 		this.intereses = new ArrayList<String>();
-	}
-	public String getNombre() {
-		return nombre;
 	}
 	public String getApellido() {
 		return apellido;
@@ -34,7 +31,7 @@ public class Alumno extends ElementoUniversidad{
 	}
 	@Override
 	public String toString() {
-		return "Alumno [nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + ", edad=" + edad
+		return "Alumno [nombre=" + super.getNombre() + ", apellido=" + apellido + ", dni=" + dni + ", edad=" + edad
 				+ ", intereses=" + intereses + "]";
 	}
 	@Override

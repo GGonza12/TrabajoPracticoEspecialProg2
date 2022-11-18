@@ -23,7 +23,7 @@ public class IteradorLista<T> implements Iterator<T> {
 		return valor;
 	}
 	
-	public Nodo<T> obtenerActual(){
+	/*public Nodo<T> obtenerActual(){
 		return this.cursor;
-	}
+	}*/
 }
