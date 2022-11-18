@@ -2,13 +2,13 @@ package Lista_viculada;
 
 import java.util.ArrayList;
 
-public class Alumno {
+public class Alumno extends ElementoUniversidad{
 	private String nombre,apellido;
 	private int dni;
 	private int edad;
 	private ArrayList<String> intereses;
 	public Alumno(String nombre, String apellido, int dni, int edad) {
-		this.nombre = nombre;
+		super(nombre);
 		this.apellido = apellido;
 		this.dni = dni;
 		this.edad = edad;
@@ -36,6 +36,10 @@ public class Alumno {
 	public String toString() {
 		return "Alumno [nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni + ", edad=" + edad
 				+ ", intereses=" + intereses + "]";
+	}
+	@Override
+	public int getCantidadAlumnos() {
+		return 1;
 	}
 	
 	

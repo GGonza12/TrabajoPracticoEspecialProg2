@@ -68,6 +68,9 @@ public class test {
 		//System.out.println("Nodo en posicion " +pos +" eliminado");
 		//System.out.println("Nodos b eliminados");
 		//ls.mostrarLista();
+		//B usar for each
+		
+		
 
 	}
 
