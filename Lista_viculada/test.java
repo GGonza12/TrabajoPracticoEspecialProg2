@@ -4,6 +4,7 @@ import java.util.Comparator;
 
 import comparadores.ComparadorApellido;
 import comparadores.ComparadorCantidadAlumnos;
+import comparadores.ComparadorDni;
 import comparadores.ComparadorInt;
 import comparadores.ComparadorInverso;
 import comparadores.ComparadorMultiple;
@@ -48,9 +49,9 @@ public class test {
 			System.out.println(i);
 		}
 		//Ejercicio 4 ejercicio f
-		lsString.obtenerPrimeraOcurrencia("Parcial");
+		System.out.println(lsString.obtenerPrimeraOcurrencia("Parcial"));
 		//Ejercicio 4 ejercicio g
-		lsString.obtenerPrimeraOcurrencia("Recuperatorio");
+		System.out.println(lsString.obtenerPrimeraOcurrencia("Recuperatorio"));
 		//Ejercicio 4 ejercicio h
 		lsString.setComp(compInversoString);
 		for(String i:lsString) {
@@ -119,16 +120,18 @@ public class test {
 		
 		
 		//agregados a la lista universidad
-		ComparadorCantidadAlumnos<ElementoUniversidad> compCantA = new ComparadorCantidadAlumnos<ElementoUniversidad>();
+		Comparator<ElementoUniversidad> compCantA = new ComparadorCantidadAlumnos();
+		
 		Lista_vinculada<ElementoUniversidad> universidad = new Lista_vinculada<ElementoUniversidad>(compCantA);
-		universidad.insertarOrdenado(unicen);
 		universidad.insertarOrdenado(olimpiadas);
+		universidad.insertarOrdenado(unicen);
 		for(ElementoUniversidad n:universidad) {
 			System.out.println(n);
 		}
-		/*Comparator<Alumno> compDni = new ComparadorNombre<Alumno>();
-		Comparator<Alumno> compApellido = new ComparadorApellido<Alumno>();
-		Comparator<Alumno> compNombre = new ComparadorNombre<Alumno>();
+		/*
+		Comparator<Alumno> compDni = new ComparadorDni();
+		Comparator<Alumno> compApellido = new ComparadorApellido();
+		Comparator<Alumno> compNombre = new ComparadorNombre();
 		Comparator<Alumno> compNombreApellido = new ComparadorMultiple<Alumno>(compNombre,compApellido);
 		Comparator<Alumno> compInversoAlumno = new ComparadorInverso<Alumno>(compNombre);
 		Comparator<Alumno> compMul = new ComparadorMultiple<Alumno>(compNombreApellido,compDni);
@@ -141,10 +144,13 @@ public class test {
 		lsAlumnos.insertarOrdenado(a3);
 		lsAlumnos.insertarOrdenado(a2);
 		lsAlumnos.insertarOrdenado(a5);
-		lsAlumnos.setComp(compNombre);
+		lsAlumnos.setComp(compMul);
 		//System.out.println("Nuevo comparador seteado");
-
+		for(Alumno n:lsAlumnos) {
+			System.out.println(n);
+		}
 		*/
+
 		
 		
 		

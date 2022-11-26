@@ -19,7 +19,7 @@ public class Lista_vinculada<T> implements Iterable<T>{
 		reordenar();
 	}
 
-	public void reordenar() {
+	private void reordenar() { //reordenar ahora es privado
 		Nodo <T> aux = this.primero;
 		this.primero =null;
 		while(aux!=null) {
@@ -65,14 +65,11 @@ public class Lista_vinculada<T> implements Iterable<T>{
 				aux = aux.getSiguienteNodo();
 				sum++;
 				}
-			if(sum==pos&&(aux.getSiguienteNodo()!=null)&&(anterior!=null)) {
+			if(sum==pos&&(anterior!=null)) { //Segundo if eliminado y condicion del primer if modificada
 				anterior.setSiguienteNodo(aux.getSiguienteNodo());
 				this.tamano--;
 			}
-			else if(sum==pos&&(aux.getSiguienteNodo()==null)&&(anterior!=null)){
-				anterior.setSiguienteNodo(null);
-				this.tamano--;
-			}
+
 			else if(sum==pos&&(aux.getSiguienteNodo()!=null)&&(anterior==null)) {
 				this.primero=aux.getSiguienteNodo();
 				this.tamano--;
@@ -80,34 +77,41 @@ public class Lista_vinculada<T> implements Iterable<T>{
 	}
 	
 	public void eliminarOcurrencias(T dato) {
-		//Nodo<T> anterior = null;
+		Nodo<T> anterior = null;
 		Nodo<T> aux = this.primero;	
-		int pos=0;
-		while (aux.getSiguienteNodo()!=null) {
-			if(aux.getValor()==dato) {
-				eliminarNodo(pos);
-				pos--;
-			}
-			//anterior= aux;
+		
+		while (aux.getSiguienteNodo()!=null&&((aux.getValor().equals(dato)==false))) {
+			anterior=aux;
 			aux = aux.getSiguienteNodo();
-			pos++;
 		}
+		while((aux.getValor().equals(dato)&&anterior==null)) {
+			this.primero=aux.getSiguienteNodo();
+			aux = aux.getSiguienteNodo();
+		}
+		while((aux.getValor().equals(dato))) {
+			anterior.setSiguienteNodo(aux.getSiguienteNodo());
+			aux = aux.getSiguienteNodo();
+		}
+		
+		
 	}
-	public void obtenerPrimeraOcurrencia(T dato) {
+	public int obtenerPrimeraOcurrencia(T dato) {
 		boolean encontrado=false;
 		Nodo<T> aux = this.primero;	
 		int pos=0;
 			while((aux!=null)&&(encontrado==false)) {
-				if(aux.getValor()==dato) {
+			//	if(aux.getValor()==dato) {
+				if(aux.getValor().equals(dato)) {
 					encontrado=!encontrado;
-					System.out.println(pos);
+					pos--;
 				}
 				aux = aux.getSiguienteNodo();
 				pos++;
 				}
 			if(encontrado==false) {
-				System.out.println("No encontrado en lista.");
+				pos=-1;
 			}
+			return pos;
 	}
 
 

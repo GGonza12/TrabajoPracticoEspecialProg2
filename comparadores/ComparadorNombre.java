@@ -4,13 +4,12 @@ import java.util.Comparator;
 
 import Lista_viculada.Alumno;
 
-public class ComparadorNombre<T> implements Comparator<T>{
+public class ComparadorNombre implements Comparator<Alumno>{
 
 	@Override
-	public int compare(T o1, T o2) {
-		Alumno a1= (Alumno) o1;
-		Alumno a2= (Alumno) o2;
-		return a1.getNombre().compareTo(a2.getNombre());
+	public int compare(Alumno o1, Alumno o2) {
+		
+		return o1.getNombre().compareTo(o2.getNombre());
 	}
 
 }
