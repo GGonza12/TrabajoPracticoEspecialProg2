@@ -5,7 +5,7 @@ import java.util.Comparator;
 
 import Lista_viculada.ElementoUniversidad;
 
-public class ComparadorCantidadAlumnos implements Comparator<ElementoUniversidad> {
+public class ComparadorCantidadAlumnos implements Comparator<ElementoUniversidad> { //Comparadores modificados
 
 	@Override
 	public int compare(ElementoUniversidad o1, ElementoUniversidad o2) {

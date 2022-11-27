@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 import Lista_viculada.Alumno;
 
-public class ComparadorApellido implements Comparator<Alumno> {
+public class ComparadorApellido implements Comparator<Alumno> { 
 
 	@Override
 	public int compare(Alumno o1, Alumno o2) {

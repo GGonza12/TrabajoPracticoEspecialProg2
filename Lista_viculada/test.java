@@ -26,14 +26,18 @@ public class test {
 		for(int i:lsInt) {
 			System.out.println(i);
 		}
+	
+		
 		//Ejercicio 4 ejercicio c
 		lsInt.eliminarNodo(0);
 		lsInt.eliminarOcurrencias(5);
 		lsInt.eliminarOcurrencias(11);
+
 		System.out.println("Elementos eliminados");
 		for(int i:lsInt) {
 			System.out.println(i);
 		}
+		
 				
 		//Ejercicio 4 ejercicio d
 		

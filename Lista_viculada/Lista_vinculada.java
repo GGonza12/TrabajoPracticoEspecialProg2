@@ -76,25 +76,28 @@ public class Lista_vinculada<T> implements Iterable<T>{
 			}
 	}
 	
-	public void eliminarOcurrencias(T dato) {
+	public void eliminarOcurrencias(T dato) { //Eliminar ocurrencias modificado. Ahora no llama al metodo eliminarNodo
 		Nodo<T> anterior = null;
 		Nodo<T> aux = this.primero;	
 		
-		while (aux.getSiguienteNodo()!=null&&((aux.getValor().equals(dato)==false))) {
+		while ((aux.getSiguienteNodo()!=null)&&(((aux.getValor().equals(dato))==false))) {
 			anterior=aux;
 			aux = aux.getSiguienteNodo();
 		}
-		while((aux.getValor().equals(dato)&&anterior==null)) {
-			this.primero=aux.getSiguienteNodo();
-			aux = aux.getSiguienteNodo();
-		}
-		while((aux.getValor().equals(dato))) {
-			anterior.setSiguienteNodo(aux.getSiguienteNodo());
-			aux = aux.getSiguienteNodo();
-		}
-		
-		
+			while((aux.getValor().equals(dato)&&anterior==null)) {
+				this.primero=aux.getSiguienteNodo();
+				aux = aux.getSiguienteNodo();
+			}
+			while(aux.getValor().equals(dato)&&(aux.getSiguienteNodo()!=null)) {
+				anterior.setSiguienteNodo(aux.getSiguienteNodo());
+				aux = aux.getSiguienteNodo();	
+			}
+			if(aux.getValor().equals(dato)&&(aux.getSiguienteNodo()==null)) {
+				anterior.setSiguienteNodo(aux.getSiguienteNodo());
+				aux = aux.getSiguienteNodo();	
+			}	
 	}
+	
 	public int obtenerPrimeraOcurrencia(T dato) {
 		boolean encontrado=false;
 		Nodo<T> aux = this.primero;	
